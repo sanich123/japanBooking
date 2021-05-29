@@ -1,7 +1,7 @@
 const getRandomNumber = function (min, max) {
   if (min >= 0 && max > 0) {
-   const randomNumber = min - 0.5 + Math.random() * (max - min + 1);
-   return(Math.round(randomNumber));
+    const randomNumber = min - 0.5 + Math.random() * (max - min + 1);
+    return(Math.round(randomNumber));
   }
   return('Function doesnt work');
 };
