@@ -6,7 +6,7 @@ let getRandomNumber = function (min, max) {
   return(console.log("Function doesn't work"));
 }
 
-console.log(getRandomNumber(1.5,2));
+getRandomNumber(1.5,2);
 
 //Решение разбирал с https://learn.javascript.ru/task/random-min-max
 //Math.random() генерит случайное число из диапазона от 0 до 1. Дальше вопрос чисто к округлению,
@@ -20,7 +20,8 @@ let getRandomNumberFixed = function(min, max, decimalPlaces) {
   }
   return(console.log("Function doesn't work"));
 }
-console.log(getRandomNumberFixed(0, 23, 9));
+
+getRandomNumberFixed(0, 23, 9);
 
 //Тоже самое, но без округления и немного пришлось погуглить метод toFixed
 // С отрицательными значениями не понял, что делать надо
