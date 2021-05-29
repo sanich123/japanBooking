@@ -1,12 +1,12 @@
 let getRandomNumber = function (min, max) {
   if (min >= 0 && max > 0) {
-   randomNumber = min - 0.5 + Math.random() * (max - min + 1);
+   let randomNumber = min - 0.5 + Math.random() * (max - min + 1);
    return(Math.round(randomNumber));
   }
   return(console.log("Function doesn't work"));
 }
 
-console.log(getRandomNumber(0,2));
+console.log(getRandomNumber(1.5,2));
 
 //Решение разбирал с https://learn.javascript.ru/task/random-min-max
 //Math.random() генерит случайное число из диапазона от 0 до 1. Дальше вопрос чисто к округлению,
@@ -15,7 +15,7 @@ console.log(getRandomNumber(0,2));
 
 let getRandomNumberFixed = function(min, max, decimalPlaces) {
   if (min >= 0 && max > 0 && decimalPlaces >=0) {
-   randomNumber = min - 0.5 + Math.random() * (max - min + 1);
+   let randomNumber = min - 0.5 + Math.random() * (max - min + 1);
    return(+randomNumber.toFixed(decimalPlaces));
   }
   return(console.log("Function doesn't work"));
