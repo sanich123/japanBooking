@@ -4,7 +4,7 @@ const getRandomPositiveInteger = function  (a, b) {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
-
+getRandomPositiveInteger();
 //console.log(getRandomPositiveInteger(-57.989879, 58.989979));
 
 const getRandomPositiveDecimal = function (a, b, decimalPlaces) {
@@ -13,10 +13,10 @@ const getRandomPositiveDecimal = function (a, b, decimalPlaces) {
   const result = Math.random() * (upper - lower + 1) + lower;
   return result.toFixed(decimalPlaces);
 };
-
+getRandomPositiveDecimal();
 //console.log(getRandomPositiveDecimal(-43.89798, -48.95678, 5));
 
-
+/*
 const TYPE_OF_ROOMS = [
   'palace',
   'flat',
@@ -112,3 +112,4 @@ console.log(getCreateCard());
 const offers = new Array(numberOfCopies).fill('').map(() => getCreateCard());
 
 console.log(offers);
+*/
