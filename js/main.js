@@ -1,15 +1,15 @@
-const getRandomPositiveInteger = function  (a, b) {
-  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+const getRandomPositiveInteger = function  (min, max) {
+  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
 getRandomPositiveInteger();
 //console.log(getRandomPositiveInteger(-57.989879, 58.989979));
 
-const getRandomPositiveDecimal = function (a, b, decimalPlaces) {
-  const lower = Math.min(Math.abs(a), Math.abs(b));
-  const upper = Math.max(Math.abs(a), Math.abs(b));
+const getRandomPositiveDecimal = function (min, max, decimalPlaces) {
+  const lower = Math.min(Math.abs(min), Math.abs(max));
+  const upper = Math.max(Math.abs(min), Math.abs(max));
   const result = Math.random() * (upper - lower + 1) + lower;
   return result.toFixed(decimalPlaces);
 };
