@@ -49,17 +49,6 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-const NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const receiveNumber = function () {
-  const number = NUMBERS.length;
-  NUMBERS.splice(0, 1);
-  if (number >= 10) {
-    return number;
-  }
-  return (`0${  number}`);
-};
-
 const NUMBER_OF_COPIES = 10;
 
 const getRandomArrayLength = (array) => {
@@ -67,9 +56,17 @@ const getRandomArrayLength = (array) => {
   return array.slice(newLength);
 };
 
-const createAuthor = () => ({
-  avatar: `img/avatars/user${receiveNumber()}.png`,
-});
+const createAuthor = (index) => {
+  if (index < 9) {
+    return {
+      avatar: `img/avatars/user0${index + 1}.png`,
+    };
+  } {
+    return {
+      avatar: `img/avatars/user${index + 1}.png`,
+    };
+  }
+};
 
 const createOffer = () => ({
   title: 'Предлагаем снять уютную двушку на окраине Токио',
@@ -93,12 +90,13 @@ const createLocation = () => ({
   lng: getRandomPositiveDecimal(139.70000, 139.80000, 5),
 });
 
-const getCreateCard = () => (
+const getCreateCard = (index) => (
   {
-    author: createAuthor(),
+    author: createAuthor(index),
     offer: createOffer(),
     location: createLocation(),
   }
 );
 
-new Array(NUMBER_OF_COPIES).fill('').map(() => getCreateCard());
+new Array(NUMBER_OF_COPIES).fill('').map((value, index) =>
+  getCreateCard(index));
