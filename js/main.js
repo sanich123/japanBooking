@@ -5,18 +5,15 @@ const getRandomPositiveInteger = function  (min, max) {
   return Math.floor(result);
 };
 getRandomPositiveInteger();
-//console.log(getRandomPositiveInteger(-57.989879, 58.989979));
 
-const getRandomPositiveDecimal = function (min, max, decimalPlaces) {
+const getRandomPositiveDecimal = function (min, max, decimalPlaces = 1) {
   const lower = Math.min(Math.abs(min), Math.abs(max));
   const upper = Math.max(Math.abs(min), Math.abs(max));
-  const result = Math.random() * (upper - lower + 1) + lower;
+  const result = Math.random() * (upper - lower) + lower;
   return result.toFixed(decimalPlaces);
 };
 getRandomPositiveDecimal();
-//console.log(getRandomPositiveDecimal(-43.89798, -48.95678, 5));
 
-/*
 const TYPE_OF_ROOMS = [
   'palace',
   'flat',
@@ -52,64 +49,54 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-const numberOfCopies = 10;
-
-const getRandomArrayMember = (array) => {
-  const randomMember = array[getRandomPositiveInteger(1, 6)];
-  return randomMember;
-};
-console.log(getRandomArrayMember(FEATURES));
-
+const NUMBER_OF_COPIES = 10;
 
 const getRandomArrayLength = (array) => {
-  const newLength = _.random(0, array.length);
+  const newLength = getRandomPositiveInteger(0, array.length - 1);
   return array.slice(newLength);
 };
 
-console.log(getRandomArrayLength(FEATURES));
-
-
-const createAuthor = () => ({
-  avatar: `img/avatars/user0${  _.random(1, 10)  }.png`,
-});
+const createAuthor = (index) => {
+  if (index < 9) {
+    return {
+      avatar: `img/avatars/user0${index + 1}.png`,
+    };
+  } {
+    return {
+      avatar: `img/avatars/user${index + 1}.png`,
+    };
+  }
+};
 
 const createOffer = () => ({
   title: 'Предлагаем снять уютную двушку на окраине Токио',
   address: {
-    lat: _.random(35.65000, 35.70000).toFixed(5),
-    lng: _.random(139.70000, 139.80000).toFixed(5),
+    lat: getRandomPositiveDecimal(35.65000, 35.70000, 5),
+    lng: getRandomPositiveDecimal(139.70000, 139.80000, 5),
   },
-  price: parseInt(_.random(0, Infinity)),
-  type: TYPE_OF_ROOMS[_.random(0, TYPE_OF_ROOMS.length - 1)],
-  rooms: parseInt(_.random(0, Infinity)),
-  guests: parseInt(_.random(0, Infinity)),
-  checkin: CHECK_IN[_.random(0, CHECK_IN.length - 1)],
-  checkout: CHECK_OUT[_.random(0, CHECK_OUT.length - 1)],
+  price: getRandomPositiveInteger(0, 999999),
+  type: TYPE_OF_ROOMS[getRandomPositiveInteger(0, TYPE_OF_ROOMS.length - 1)],
+  rooms: getRandomPositiveInteger(1, 7),
+  guests: getRandomPositiveInteger(1, 5),
+  checkin: CHECK_IN[getRandomPositiveInteger(0, CHECK_IN.length - 1)],
+  checkout: CHECK_OUT[getRandomPositiveInteger(0, CHECK_OUT.length - 1)],
   features: getRandomArrayLength(FEATURES),
   description: 'Какое-то описание',
   photos: getRandomArrayLength(PHOTOS),
 });
 
-//console.log(createOffer());
-
 const createLocation = () => ({
-  lat: _.random(35.65000, 35.70000).toFixed(5),
-  lng: _.random(139.70000, 139.80000).toFixed(5),
+  lat: getRandomPositiveDecimal(35.65000, 35.70000, 5),
+  lng: getRandomPositiveDecimal(139.70000, 139.80000, 5),
 });
 
-//console.log(createLocation());
-
-const getCreateCard = () => (
+const getCreateCard = (index) => (
   {
-    author: createAuthor(),
+    author: createAuthor(index),
     offer: createOffer(),
     location: createLocation(),
   }
 );
 
-console.log(getCreateCard());
-
-const offers = new Array(numberOfCopies).fill('').map(() => getCreateCard());
-
-console.log(offers);
-*/
+new Array(NUMBER_OF_COPIES).fill('').map((value, index) =>
+  getCreateCard(index));
