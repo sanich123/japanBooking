@@ -99,7 +99,7 @@ const getCreateCard = (index) => (
     location: createLocation(),
   }
 );
-console.log(getCreateCard());
+
 const newOffers = new Array(NUMBER_OF_COPIES).fill('').map((value, index) =>
   getCreateCard(index));
 
@@ -134,6 +134,7 @@ newOffers.forEach((newOffer) => {
   }
   realOffer.querySelector('.popup__text--capacity').textContent = `${newOffer.offer.rooms}   комнаты для ${newOffer.offer.guests} гостей`;
 
+  // eslint-disable-next-line no-useless-concat
   realOffer.querySelector('.popup__text--time').textContent = `Заезд после ${  newOffer.offer.checkin  },` +  ` выезд до ${  newOffer.offer.checkout}`;
   const features = realOffer.querySelector('.popup__features');
 
