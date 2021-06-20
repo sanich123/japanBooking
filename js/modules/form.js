@@ -9,9 +9,9 @@ const typeOfHouse = document.querySelector('#type');
 const inputTitle = document.querySelector('#title');
 const inputPrice = document.querySelector('#price');
 const inputAddress = document.querySelector('#address');
-const MIN_TITLE_LENGTH = 30;
-const MAX_TITLE_LENGTH = 100;
-const MAX_PRICE = 1000000;
+// const MIN_TITLE_LENGTH = 30;
+// const MAX_TITLE_LENGTH = 100;
+// const MAX_PRICE = 1000000;
 
 //Валидация полей ввода title and price
 inputPrice.addEventListener('invalid', () => {
