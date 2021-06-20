@@ -56,6 +56,17 @@ fieldset {
   border: 0;
 }
 
+input:valid {
+  border-color: green;
+}
+
+input:invalid {
+  border: 5px solid red;
+}
+
+input:required:valid {
+  border-color: green;
+}
 
 /* Карта с объявлениями
    ========================================================================== */
