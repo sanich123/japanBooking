@@ -1,6 +1,7 @@
 //Валидация полей ввода title and price
 const inputTitle = document.querySelector('#title');
 const inputPrice = document.querySelector('#price');
+const inputAddress = document.querySelector('#address');
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
@@ -10,13 +11,19 @@ inputPrice.addEventListener('input', () => {
   const priceValue = inputPrice.value;
   if (priceValue > MAX_PRICE) {
     inputPrice.setCustomValidity(`Введенное число больше максимального на ${priceValue - MAX_PRICE}`);
-  } else if (priceValue < inputPrice.min) {
-    inputPrice.setCustomValidity(`Введенное число меньше минимального на ${inputPrice.min - priceValue}`);
+  } else if (priceValue < +inputPrice.min) {
+    inputPrice.setCustomValidity(`Введенное число меньше минимального на ${+inputPrice.min - priceValue}`);
   }
   else {
     inputPrice.setCustomValidity('');
   }
   inputPrice.reportValidity();
+});
+
+inputPrice.addEventListener('invalid', () => {
+  if (inputPrice.validity.valueMissing) {
+    inputPrice.setCustomValidity('Обязательное поле');
+  }
 });
 
 inputTitle.addEventListener('input', () => {
@@ -31,40 +38,18 @@ inputTitle.addEventListener('input', () => {
   inputTitle.reportValidity();
 });
 
-//Валидация полей ввода title and price
-// inputPrice.addEventListener('invalid', () => {
-//   if (inputPrice.validity.valueMissing) {
-//     inputPrice.setCustomValidity('Обязательное поле');
-//   } else if (inputPrice.validity.rangeOverflow) {
-//     inputPrice.setCustomValidity('Максимальное значение — 1000000');
-//   } else if (inputPrice.validity.rangeUnderflow) {
-//     inputPrice.setCustomValidity('Введенное значение меньше минимального');
-//   } else if (inputPrice.validity.typeMismatch) {
-//     inputPrice.setCustomValidity('Числовое поле');
-//   } else {
-//     inputPrice.setCustomValidity('');
-//   }
-// });
+inputTitle.addEventListener('invalid', () => {
+  if (inputTitle.validity.valueMissing) {
+    inputTitle.setCustomValidity('Обязательное поле');
+  }
+});
 
-// inputTitle.addEventListener('invalid', () => {
-//   if (inputTitle.validity.tooShort) {
-//     inputTitle.setCustomValidity('Минимальная длина — 30 символов');
-//   } else if (inputTitle.validity.tooLong) {
-//     inputTitle.setCustomValidity('Максимальная длина — 100 символов');
-//   } else if (inputTitle.validity.valueMissing) {
-//     inputTitle.setCustomValidity('Обязательное текстовое поле');
-//   } else {
-//     inputTitle.setCustomValidity('');
-//   }
-// });
-
-// inputAddress.addEventListener('invalid', () => {
-//   if (inputAddress.validity.valueMissing) {
-//     inputAddress.setCustomValidity('Обязательное поле');
-//   } else {
-//     inputAddress.setCustomValidity('');
-//   }
-// });
-
+inputAddress.addEventListener('invalid', () => {
+  if (inputAddress.validity.valueMissing) {
+    inputAddress.setCustomValidity('Обязательное поле');
+  } else {
+    inputAddress.setCustomValidity('');
+  }
+});
 
 export {inputPrice};
