@@ -55,7 +55,7 @@ const createOffer = () => ({
     lat: getRandomPositiveDecimal(35.65000, 35.70000, 5),
     lng: getRandomPositiveDecimal(139.70000, 139.80000, 5),
   },
-  price: getRandomPositiveInteger(0, 999999),
+  price: getRandomPositiveInteger(0, 9999),
   type: TYPE_OF_ROOMS[getRandomPositiveInteger(0, TYPE_OF_ROOMS.length - 1)],
   rooms: getRandomPositiveInteger(1, 7),
   guests: getRandomPositiveInteger(1, 5),
