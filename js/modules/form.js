@@ -32,7 +32,6 @@ typeOfHouse.addEventListener('change', () => {
   }
 });
 
-
 //Соответствие комнат и вместимости
 roomNumber.addEventListener('change', () => {
   if (roomNumber[0].selected) {
@@ -43,12 +42,12 @@ roomNumber.addEventListener('change', () => {
   }
   if (roomNumber[1].selected) {
     roomCapacity[0].disabled = true;
-    roomCapacity[1].selected = true;
+    roomCapacity[1].disabled = false;
     roomCapacity[2].disabled = false;
     roomCapacity[3].disabled = true;
   }
   if (roomNumber[2].selected) {
-    roomCapacity[0].selected = true;
+    roomCapacity[0].disabled = false;
     roomCapacity[1].disabled = false;
     roomCapacity[2].disabled = false;
     roomCapacity[3].disabled = true;
@@ -60,6 +59,7 @@ roomNumber.addEventListener('change', () => {
     roomCapacity[3].selected = true;
   }
 });
+
 //Синхронизация времени заезда - уезда
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
