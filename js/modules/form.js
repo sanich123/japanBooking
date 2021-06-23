@@ -7,9 +7,6 @@ const roomCapacity = document.querySelector('#capacity');
 //Соответствие типа жилья и цены
 const typeOfHouse = document.querySelector('#type');
 
-//Синхронизация времени заезда - уезда
-const timeIn = document.querySelector('#timein');
-const timeOut = document.querySelector('#timeout');
 
 //Соответствие типа жилья и цены
 typeOfHouse.addEventListener('change', () => {
@@ -34,7 +31,6 @@ typeOfHouse.addEventListener('change', () => {
     inputPrice.placeholder = inputPrice.min;
   }
 });
-
 
 //Соответствие комнат и вместимости
 roomNumber.addEventListener('change', () => {
@@ -63,6 +59,10 @@ roomNumber.addEventListener('change', () => {
     roomCapacity[3].selected = true;
   }
 });
+
+//Синхронизация времени заезда - уезда
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
 
 timeIn.addEventListener('change', () => {
   if (timeIn[0].selected) {
