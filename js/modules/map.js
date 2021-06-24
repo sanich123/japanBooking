@@ -1,9 +1,11 @@
 import { disableFunction, enableFunction } from './util.js';
+import { newOffers } from './data.js';
 
 disableFunction();
 
 const resetButton = document.querySelector('.ad-form__reset');
 const inputAddress = document.querySelector('#address');
+
 //Создаем карту
 const map = L
   .map('map-canvas')
@@ -11,7 +13,7 @@ const map = L
     enableFunction();
   })
   .setView({lat: 35.68950,
-    lng: 139.69171}, 10);
+    lng: 139.69171}, 16);
 //Добавляем слой с изображениями
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -42,30 +44,28 @@ bigMarker.on('moveend', (evt) => {
 // bigMarker.remove();
 
 
-const points = [
-  {
-    title: 'Футура',
-    lat: 35.68810,
-    lng: 139.78342,
-  },
-  {
-    title: 'Шаверма',
-    lat: 35.65575,
-    lng: 139.75743,
-  },
-  {
-    title: 'Франк',
-    lat: 35.69978,
-    lng: 139.73093,
-  },
-  {
-    title: 'Ginza',
-    lat: 35.67035,
-    lng: 139.79930,
-  },
-];
+// points.forEach(({lat, lng, title}) => {
+//   const customIcon = L.icon({
+//     iconUrl: './leaflet/images/marker-icon.png',
+//     iconSize: [25, 41],
+//     iconAnchor: [12, 41],
+//   });
+//   const marker = L.marker(
+//     {
+//       lat,
+//       lng,
+//     },
+//     {
+//       customIcon,
+//     },
+//   );
 
-points.forEach(({lat, lng, title}) => {
+//   marker.addTo(map)
+//     .bindPopup(title);
+// });
+
+newOffers.forEach((newOffer) => {
+
   const customIcon = L.icon({
     iconUrl: './leaflet/images/marker-icon.png',
     iconSize: [25, 41],
@@ -73,18 +73,16 @@ points.forEach(({lat, lng, title}) => {
   });
   const marker = L.marker(
     {
-      lat,
-      lng,
+      lat: newOffer.location.lat,
+      lng: newOffer.location.lng,
     },
     {
       customIcon,
     },
   );
-
   marker.addTo(map)
-    .bindPopup(title);
+    .bindPopup(newOffer.offer.title);
 });
-
 
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
