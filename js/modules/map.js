@@ -5,10 +5,8 @@ disableFunction();
 
 const resetButton = document.querySelector('.ad-form__reset');
 const inputAddress = document.querySelector('#address');
-
 const templateOffer = document.querySelector('#card').content;
 const popupArticle = templateOffer.querySelector('.popup');
-
 const similarOfferFragment = document.createDocumentFragment();
 
 //Создаем карту
@@ -115,7 +113,6 @@ resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
     lat: 35.68950, lng: 139.69171,
   });
-
   map.setView({
     lat: 35.68950, lng: 139.69171,
   }, 16);
