@@ -42,7 +42,8 @@ const bigMarker = L.marker(
 
 //Обработчик перемещения большой метки
 bigMarker.on('moveend', (evt) => {
-  inputAddress.value = evt.target.getLatLng();
+  const latLng = evt.target.getLatLng();
+  inputAddress.value = `lat: ${latLng.lat.toFixed(5) }, lng: ${  latLng.lng.toFixed(5)}`;
 });
 
 // bigMarker.remove();
@@ -112,12 +113,10 @@ newOffers.forEach((newOffer) => {
 
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
-    lat: 35.68950,
-    lng: 139.69171,
+    lat: 35.68950, lng: 139.69171,
   });
 
   map.setView({
-    lat: 35.68950,
-    lng: 139.69171,
+    lat: 35.68950, lng: 139.69171,
   }, 16);
 });
