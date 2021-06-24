@@ -35,7 +35,7 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-const NUMBER_OF_COPIES = 2;
+const NUMBER_OF_COPIES = 10;
 
 const createAuthor = (index) => {
   if (index < 9) {
