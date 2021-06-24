@@ -36,7 +36,6 @@ const bigMarker = L.marker(
 //Обработчик перемещения большой метки
 bigMarker.on('moveend', (evt) => {
   inputAddress.value = evt.target.getLatLng();
-
 });
 
 
