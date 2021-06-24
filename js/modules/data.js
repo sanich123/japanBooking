@@ -82,4 +82,5 @@ const getCreateCard = (index) => (
 const newOffers = new Array(NUMBER_OF_COPIES).fill('').map((value, index) =>
   getCreateCard(index));
 
-export {newOffers, PHOTOS, FEATURES};
+
+export { newOffers, PHOTOS, FEATURES };

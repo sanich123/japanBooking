@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="leaflet/leaflet.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кексобукинг</title>
 </head>
@@ -19,7 +20,7 @@
     <section class="map">
 
       <!-- Блок для вставки карты -->
-      <div class="map__canvas" id="map-canvas"></div>
+      <div class="map__canvas" id="map-canvas" style="height: 480px;"></div>
 
       <!-- Фильтрация объявлений -->
       <div class="map__filters-container">
@@ -91,7 +92,8 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">
           <label class="ad-form__label" for="address">Адрес (координаты)</label>
-          <input id="address" name="address" type="text" required>
+          <input id="address" name="address" type="text" placeholder="lat: 35.68950,
+          lng: 139.69171" required readonly>
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="type">Тип жилья</label>
@@ -229,8 +231,8 @@
       <button type="button" class="error__button">Попробовать снова</button>
     </div>
   </template>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
-
 <script src="js/main.js" type="module"></script>
+<script src="leaflet/leaflet.js"></script>
+<!-- <script src="leaflet/leaflet.js.map"></script> -->
 </body>
 </html>

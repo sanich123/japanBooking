@@ -1,7 +1,6 @@
 import { newOffers, PHOTOS, FEATURES } from './data.js';
 
 const templatePlace = document.querySelector('.map__canvas');
-//Не забыть убрать выравнивание в css!!
 
 const templateOffer = document.querySelector('#card').content;
 const popupArticle = templateOffer.querySelector('.popup');
@@ -60,4 +59,5 @@ newOffers.forEach((newOffer) => {
 });
 
 templatePlace.appendChild(similarOfferFragment);
+
 
