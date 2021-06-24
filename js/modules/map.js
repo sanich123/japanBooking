@@ -27,9 +27,9 @@ L.tileLayer(
 
 //Создаем большую иконку
 const bigCustomIcon = L.icon({
-  iconUrl: './leaflet/images/marker-icon-2x.png',
-  iconSize: [50, 82],
-  iconAnchor: [25, 82],
+  iconUrl: './img/main-pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
 });
 
 //Создаем большую метку
@@ -41,10 +41,16 @@ const bigMarker = L.marker(
 //Обработчик перемещения большой метки
 bigMarker.on('moveend', (evt) => {
   const latLng = evt.target.getLatLng();
-  inputAddress.value = `lat: ${latLng.lat.toFixed(5) }, lng: ${  latLng.lng.toFixed(5)}`;
+  inputAddress.value = `lat: ${latLng.lat.toFixed(5)}, lng: ${  latLng.lng.toFixed(5)}`;
 });
 
 // bigMarker.remove();
+
+const customIcon = L.icon({
+  iconUrl: './img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
 
 newOffers.forEach((newOffer) => {
   const realOffer = popupArticle.cloneNode(true);
@@ -91,18 +97,14 @@ newOffers.forEach((newOffer) => {
       popupArticle.children[index].style.display = 'none';
     }
   }
-  const customIcon = L.icon({
-    iconUrl: './leaflet/images/marker-icon.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-  });
+
   const marker = L.marker(
     {
       lat: newOffer.location.lat,
       lng: newOffer.location.lng,
     },
     {
-      customIcon,
+      icon: customIcon,
     },
   );
   marker.addTo(map)
