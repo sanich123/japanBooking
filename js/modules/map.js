@@ -50,58 +50,9 @@ const customIcon = L.icon({
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
-// const createCustomPopup = () => {
-//   newOffers.forEach((newOffer) => {
-//     const realOffer = popupArticle.cloneNode(true);
-//     realOffer.querySelector('.popup__title').textContent = newOffer.offer.title;
-//     realOffer.querySelector('.popup__text--address').textContent = `${newOffer.offer.address.lat   },${  newOffer.offer.address.lng}`;
-//     realOffer.querySelector('.popup__text--price').textContent = `${newOffer.offer.price  } ₽/ночь`;
-//     realOffer.querySelector('.popup__type').textContent = newOffer.offer.type;
-//     switch (newOffer.offer.type) {
-//       case 'flat' : realOffer.querySelector('.popup__type').textContent = 'Квартира'; break;
-//       case 'bungalow' : realOffer.querySelector('.popup__type').textContent = 'Бунгало'; break;
-//       case 'house' : realOffer.querySelector('.popup__type').textContent = 'Дом'; break;
-//       case 'palace' : realOffer.querySelector('.popup__type').textContent = 'Дворец'; break;
-//       case 'hotel' : realOffer.querySelector('.popup__type').textContent = 'Отель'; break;
-//     }
-//     realOffer.querySelector('.popup__text--capacity').textContent = `${newOffer.offer.rooms}   комнаты для ${newOffer.offer.guests} гостей`;
-//     // eslint-disable-next-line no-useless-concat
-//     realOffer.querySelector('.popup__text--time').textContent = `Заезд после ${  newOffer.offer.checkin  },` +  ` выезд до ${  newOffer.offer.checkout}`;
-//     const features = realOffer.querySelector('.popup__features');
-//     features.innerHTML = '';
 
-//     FEATURES.forEach((currentValue) => {
-//       const feature = document.createElement('li');
-//       feature.classList.add('popup__feature');
-//       feature.classList.add(`popup__feature--${currentValue}`);
-//       features.appendChild(feature);
-//     });
-
-//     realOffer.querySelector('.popup__description').textContent = newOffer.offer.description;
-//     const photos = realOffer.querySelector('.popup__photos');
-//     photos.innerHTML = '';
-
-//     PHOTOS.forEach((currentValue) => {
-//       const photo = document.createElement('img');
-//       photo.classList.add('popup__photo');
-//       photo.src = currentValue;
-//       photo.width = 45;
-//       photo.height = 40;
-//       photo.alt = 'Фотография жилья';
-//       photos.appendChild(photo);
-//     });
-//     realOffer.querySelector('.popup__avatar').src = newOffer.author.avatar;
-//     for (let index = 0; index < popupArticle.length; index++) {
-//       if (popupArticle.children[index].textContent === '')  {
-//         popupArticle.children[index].style.display = 'none';
-//       }
-//     }
-//     similarOfferFragment.appendChild(realOffer);
-//   });
-// };
-// createCustomPopup(newOffer);
-
-newOffers.forEach((newOffer) => {
+//Создание попапа
+const createCustomPopup = (newOffer) => {
   const realOffer = popupArticle.cloneNode(true);
   realOffer.querySelector('.popup__title').textContent = newOffer.offer.title;
   realOffer.querySelector('.popup__text--address').textContent = `${newOffer.offer.address.lat   },${  newOffer.offer.address.lng}`;
@@ -119,18 +70,15 @@ newOffers.forEach((newOffer) => {
   realOffer.querySelector('.popup__text--time').textContent = `Заезд после ${  newOffer.offer.checkin  },` +  ` выезд до ${  newOffer.offer.checkout}`;
   const features = realOffer.querySelector('.popup__features');
   features.innerHTML = '';
-
   FEATURES.forEach((currentValue) => {
     const feature = document.createElement('li');
     feature.classList.add('popup__feature');
     feature.classList.add(`popup__feature--${currentValue}`);
     features.appendChild(feature);
   });
-
   realOffer.querySelector('.popup__description').textContent = newOffer.offer.description;
   const photos = realOffer.querySelector('.popup__photos');
   photos.innerHTML = '';
-
   PHOTOS.forEach((currentValue) => {
     const photo = document.createElement('img');
     photo.classList.add('popup__photo');
@@ -146,22 +94,33 @@ newOffers.forEach((newOffer) => {
       popupArticle.children[index].style.display = 'none';
     }
   }
+  similarOfferFragment.appendChild(realOffer);
+  return realOffer;
+};
+
+const markerGroup = L.layerGroup().addTo(map);
+
+
+//Функция создания маркера с popupом
+const createMarker = (currentValue) => {
   const marker = L.marker(
-    {
-      lat: newOffer.location.lat,
-      lng: newOffer.location.lng,
-    },
-    {
-      icon: customIcon,
-    },
+    { lat: currentValue.location.lat,
+      lng: currentValue.location.lng },
+    { icon: customIcon },
   );
-  marker.addTo(map)
-    .bindPopup(similarOfferFragment.appendChild(realOffer),
-      {
-        keepInView: true,
-      });
+  marker.addTo(markerGroup).bindPopup(createCustomPopup(currentValue),{ keepInView: true });
+};
+
+
+//перебор выбранного массива с созданием попапов (и опциональный slice, которрый будет нужен дальше)
+newOffers.slice(0, newOffers.length / 2).forEach((currentValue) => {
+  createMarker(currentValue);
 });
 
+newOffers.slice(newOffers.length / 2).forEach((currentValue) => {
+  createMarker(currentValue);
+});
+//markerGroup.clearLayers();
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
     lat: 35.68491, lng: 139.75159,
@@ -170,3 +129,4 @@ resetButton.addEventListener('click', () => {
     lat: 35.68491, lng: 139.75159,
   }, 14);
 });
+
