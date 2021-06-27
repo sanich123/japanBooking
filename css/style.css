@@ -98,11 +98,6 @@ input:required:valid {
   width: 100%;
   height: 500px;
   background-color: #dddddd;
-  /*УБРАТЬ ОТСЮДА ПОТОМ*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*УБРАТЬ ОТСЮДА ПОТОМ*/
 }
 
 
