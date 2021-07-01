@@ -27,10 +27,10 @@ const fetchOffers = createFetchGet(
       createMarker(currentValue);
     });
   },
-  (err) => {
-    // eslint-disable-next-line no-console
-    console.error(err);
-  },
+  // (err) => {
+  //   // eslint-disable-next-line no-console
+  //   console.error(err);
+  // },
 );
 fetchOffers();
 
