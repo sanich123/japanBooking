@@ -1,5 +1,6 @@
 import { inputPrice } from './validation.js';
 
+
 //Соответствие комнат и гостей
 const roomNumber = document.querySelector('#room_number');
 const roomCapacity = document.querySelector('#capacity');
@@ -87,4 +88,5 @@ timeOut.addEventListener('change', () => {
     timeIn[2].selected = true;
   }
 });
+
 

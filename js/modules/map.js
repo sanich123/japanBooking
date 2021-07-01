@@ -134,4 +134,4 @@ resetButton.addEventListener('click', () => {
   }, 14);
 });
 
-export {createMarker};
+export {createMarker, bigMarker, map};
