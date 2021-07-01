@@ -80,7 +80,12 @@ const createFetchPost = () => {
         document.addEventListener('keydown', removeFailMessage);
         document.querySelector('.error').addEventListener('click', removeFailMessageByClick);
       }
-    });
+    })
+      .catch(() => {
+        document.body.append(templateFail.cloneNode(true));
+        document.addEventListener('keydown', removeFailMessage);
+        document.querySelector('.error').addEventListener('click', removeFailMessageByClick);
+      });
   });
 };
 createFetchPost();
