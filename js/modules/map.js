@@ -101,9 +101,7 @@ const createCustomPopup = (newOffer) => {
   similarOfferFragment.appendChild(realOffer);
   return realOffer;
 };
-
 const markerGroup = L.layerGroup().addTo(map);
-
 
 //Функция создания маркера с popupом
 const createMarker = (currentValue) => {

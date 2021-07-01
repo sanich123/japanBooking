@@ -3,7 +3,6 @@ import { showAlert } from './util.js';
 import {bigMarker} from './map.js';
 import {map} from './map.js';
 
-
 const createFetchGet = (onSuccess, onError) => () => fetch('https://23.javascript.pages.academy/keksobooking/data', {
   method: 'GET',
   credentials: 'same-origin',
@@ -55,6 +54,7 @@ const removeFailMessage = (evt) => {
 const removeFailMessageByClick = () => {
   document.querySelector('.error').remove();
 };
+
 const createFetchPost = () => {
   submitButton.addEventListener('submit', (evt) => {
     evt.preventDefault();
