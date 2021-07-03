@@ -10,7 +10,7 @@ import { getData } from './modules/fetch.js';
 const showOffers = getData(
   ('https://23.javascript.pages.academy/keksobooking/data'),
   (newOffer) => {
-    newOffer.forEach((currentValue) => {
+    newOffer.slice(0, newOffer.length / 4).forEach((currentValue) => {
       createMarker(currentValue);
     });
   },
