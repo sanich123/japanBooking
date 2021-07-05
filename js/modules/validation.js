@@ -2,6 +2,8 @@
 const inputTitle = document.querySelector('#title');
 const inputPrice = document.querySelector('#price');
 const inputAddress = document.querySelector('#address');
+
+
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE = 1000000;
@@ -45,4 +47,5 @@ inputAddress.addEventListener('invalid', () => {
     inputAddress.setCustomValidity('');
   }
 });
+
 export {inputPrice};

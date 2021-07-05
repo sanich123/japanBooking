@@ -1,32 +1,9 @@
-// Получает рандомное положительное число
-const getRandomPositiveInteger = function (min, max) {
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-getRandomPositiveInteger();
-
-// Получает рандомное положительное число с установленным количество запятых
-const getRandomPositiveDecimal = function (min, max, decimalPlaces = 1) {
-  const lower = Math.min(Math.abs(min), Math.abs(max));
-  const upper = Math.max(Math.abs(min), Math.abs(max));
-  const result = Math.random() * (upper - lower) + lower;
-  return result.toFixed(decimalPlaces);
-};
-getRandomPositiveDecimal();
-
-// Получает случайную длину массива
-const getRandomArrayLength = (array) => {
-  const newLength = getRandomPositiveInteger(0, array.length - 1);
-  return array.slice(newLength);
-};
-
 //Блокирует и разблокирует форму при запуске
 const ourForm = document.querySelector('.ad-form');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersSelects = mapFilters.children;
 const allFieldsets = ourForm.querySelectorAll('fieldset');
+const ALERT_SHOW_TIME = 5000;
 
 //Выключение всех форм
 const disableFunction = function () {
@@ -54,5 +31,23 @@ const enableFunction = function () {
 };
 enableFunction();
 
-export {getRandomPositiveInteger, getRandomPositiveDecimal, getRandomArrayLength, enableFunction, disableFunction};
+
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = 100;
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = 0;
+  alertContainer.style.top = 0;
+  alertContainer.style.right = 0;
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+  alertContainer.textContent = message;
+  document.body.append(alertContainer);
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+};
+export {enableFunction, disableFunction, showAlert};
 
