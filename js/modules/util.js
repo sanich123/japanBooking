@@ -4,7 +4,6 @@ const mapFilters = document.querySelector('.map__filters');
 const mapFiltersSelects = mapFilters.children;
 const allFieldsets = ourForm.querySelectorAll('fieldset');
 const ALERT_SHOW_TIME = 5000;
-
 //Выключение всех форм
 const disableFunction = function () {
   ourForm.classList.add('ad-form--disabled');
@@ -16,8 +15,6 @@ const disableFunction = function () {
     mapFiltersSelect.disabled = true;
   }
 };
-disableFunction();
-
 //Включение всех форм
 const enableFunction = function () {
   ourForm.classList.remove('ad-form--disabled');
@@ -29,8 +26,13 @@ const enableFunction = function () {
     mapFiltersSelect.disabled = false;
   }
 };
-enableFunction();
 
+const disableFilterForm = () => {
+  mapFilters.classList.add('map__filters--disabled');
+  for (const mapFiltersSelect of mapFiltersSelects) {
+    mapFiltersSelect.disabled = true;
+  }
+};
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -49,5 +51,6 @@ const showAlert = (message) => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
 };
-export {enableFunction, disableFunction, showAlert};
+
+export {enableFunction, disableFunction, showAlert, disableFilterForm};
 

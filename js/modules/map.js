@@ -122,7 +122,7 @@ const createMarker = (currentValue) => {
 // newOffers.slice(newOffers.length / 2).forEach((currentValue) => {
 //   createMarker(currentValue);
 // });
-//markerGroup.clearLayers();
+markerGroup.clearLayers();
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
     lat: 35.68491, lng: 139.75159,
@@ -132,4 +132,4 @@ resetButton.addEventListener('click', () => {
   }, 14);
 });
 
-export {createMarker, bigMarker, map};
+export {createMarker, bigMarker, map, markerGroup};

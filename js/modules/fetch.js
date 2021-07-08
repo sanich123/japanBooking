@@ -1,3 +1,5 @@
+import { disableFilterForm } from './util.js';
+
 const getData = (url, onSuccess, onError) => () =>
   fetch(url, {
     method: 'GET',
@@ -14,6 +16,7 @@ const getData = (url, onSuccess, onError) => () =>
     })
     .catch((err) => {
       onError(err);
+      disableFilterForm();
     });
 
 const postData = (url, body, onSuccess, onError) => {
