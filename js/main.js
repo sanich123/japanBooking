@@ -7,7 +7,8 @@ import {createMarker} from './modules/map.js';
 import {  showAlert } from './modules/util.js';
 import { getData } from './modules/fetch.js';
 import { markerGroup } from './modules/map.js';
-
+import { debounce } from './utils/debounce.js';
+const RERENDER_DELAY = 500;
 const blockFilter = document.querySelector('.map__filters');
 const NUMBER_FOR_SLICING = 10;
 const filterType = blockFilter.querySelector('#housing-type');
@@ -33,6 +34,7 @@ getData(
     const filter = () => {
       let arr = offer.slice();
       const filtersFunctions = [
+        // filtersType(arr),
         () => {
           const value = filterType.value;
           arr = arr.filter((it) => value === 'any' ? it : it.offer.type === value);
@@ -89,21 +91,21 @@ getData(
       });
       renderSimilarOffers(arr);
     };
-    filterPrice.addEventListener('change', () => {
+    filterPrice.addEventListener('change', debounce(() => {
       filter();
-    });
-    filterType.addEventListener('change', () => {
+    }, RERENDER_DELAY));
+    filterType.addEventListener('change', debounce(() => {
       filter();
-    });
-    filterRooms.addEventListener('change', () => {
+    }, RERENDER_DELAY));
+    filterRooms.addEventListener('change', debounce(() => {
       filter();
-    });
-    filterGuests.addEventListener('change', () => {
+    }, RERENDER_DELAY));
+    filterGuests.addEventListener('change', debounce(() => {
       filter();
-    });
-    filterFeatures.addEventListener('change', () => {
+    }, RERENDER_DELAY));
+    filterFeatures.addEventListener('change', debounce(() => {
       filter();
-    });
+    }, RERENDER_DELAY));
   },
   (error) => {
     showAlert(`Данные с сервера не загружены. ${error}`);
