@@ -8,9 +8,11 @@ import {  showAlert } from './modules/util.js';
 import { getData } from './modules/fetch.js';
 import { markerGroup } from './modules/map.js';
 import { debounce } from './utils/debounce.js';
+
 const RERENDER_DELAY = 500;
-const blockFilter = document.querySelector('.map__filters');
 const NUMBER_FOR_SLICING = 10;
+
+const blockFilter = document.querySelector('.map__filters');
 const filterType = blockFilter.querySelector('#housing-type');
 const filterPrice = blockFilter.querySelector('#housing-price');
 const filterRooms = blockFilter.querySelector('#housing-rooms');
