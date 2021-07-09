@@ -113,15 +113,6 @@ const createMarker = (currentValue) => {
   marker.addTo(markerGroup).bindPopup(createCustomPopup(currentValue),{ keepInView: true });
 };
 
-
-//перебор выбранного массива с созданием попапов (и опциональный slice, которрый будет нужен дальше)
-// newOffers.slice(0, newOffers.length / 2).forEach((currentValue) => {
-//   createMarker(currentValue);
-// });
-
-// newOffers.slice(newOffers.length / 2).forEach((currentValue) => {
-//   createMarker(currentValue);
-// });
 markerGroup.clearLayers();
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
