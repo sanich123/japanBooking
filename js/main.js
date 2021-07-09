@@ -4,9 +4,9 @@ import './modules/map.js';
 import './modules/fetch.js';
 import './modules/send-form.js';
 import {createMarker} from './modules/map.js';
-import { enableFunction, showAlert } from './modules/util.js';
+import {  showAlert } from './modules/util.js';
 import { getData } from './modules/fetch.js';
-import {markerGroup} from './modules/map.js';
+import { markerGroup } from './modules/map.js';
 
 const blockFilter = document.querySelector('.map__filters');
 const NUMBER_FOR_SLICING = 10;
@@ -15,7 +15,6 @@ const filterPrice = blockFilter.querySelector('#housing-price');
 const filterRooms = blockFilter.querySelector('#housing-rooms');
 const filterGuests = blockFilter.querySelector('#housing-guests');
 const filterFeatures = blockFilter.querySelector('#housing-features');
-
 
 const renderSimilarOffers = (arr) => {
   markerGroup.clearLayers();
