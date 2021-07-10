@@ -55,7 +55,6 @@ const createCustomPopup = (newOffer) => {
   const realOffer = popupArticle.cloneNode(true);
   realOffer.querySelector('.popup__title').textContent = newOffer.offer.title;
   realOffer.querySelector('.popup__text--address').textContent = newOffer.offer.address;
-  // realOffer.querySelector('.popup__text--address').textContent = `${newOffer.offer.address.lat   },${  newOffer.offer.address.lng}`;
   realOffer.querySelector('.popup__text--price').textContent = `${newOffer.offer.price  } ₽/ночь`;
   realOffer.querySelector('.popup__type').textContent = newOffer.offer.type;
   switch (newOffer.offer.type) {
