@@ -2,7 +2,7 @@ import {createMarker} from './map.js';
 import {  showAlert } from './util.js';
 import { getData } from './fetch.js';
 import { markerGroup } from './map.js';
-import { debounce } from '../utils/debounce.js';
+import { debounce } from './util.js';
 
 const RERENDER_DELAY = 500;
 const NUMBER_FOR_SLICING = 10;
@@ -31,7 +31,6 @@ getData(
     const filter = () => {
       let arr = offer.slice();
       const filtersFunctions = [
-        // filtersType(arr),
         () => {
           const value = filterType.value;
           arr = arr.filter((it) => value === 'any' ? it : it.offer.type === value);

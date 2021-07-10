@@ -42,8 +42,6 @@ bigMarker.on('moveend', (evt) => {
   inputAddress.value = `${latLng.lat.toFixed(5)}, ${  latLng.lng.toFixed(5)}`;
 });
 
-// bigMarker.remove();
-
 const customIcon = L.icon({
   iconUrl: './img/pin.svg',
   iconSize: [40, 40],
@@ -100,6 +98,7 @@ const createCustomPopup = (newOffer) => {
   similarOfferFragment.appendChild(realOffer);
   return realOffer;
 };
+
 const markerGroup = L.layerGroup().addTo(map);
 
 //Функция создания маркера с popupом
