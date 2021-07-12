@@ -4,7 +4,6 @@ const mapFilters = document.querySelector('.map__filters');
 const mapFiltersSelects = mapFilters.children;
 const allFieldsets = ourForm.querySelectorAll('fieldset');
 const ALERT_SHOW_TIME = 5000;
-
 //Выключение всех форм
 const disableFunction = function () {
   ourForm.classList.add('ad-form--disabled');
@@ -16,8 +15,6 @@ const disableFunction = function () {
     mapFiltersSelect.disabled = true;
   }
 };
-disableFunction();
-
 //Включение всех форм
 const enableFunction = function () {
   ourForm.classList.remove('ad-form--disabled');
@@ -29,8 +26,13 @@ const enableFunction = function () {
     mapFiltersSelect.disabled = false;
   }
 };
-enableFunction();
-
+//Выключение формы фильтров
+const disableFilterForm = () => {
+  mapFilters.classList.add('map__filters--disabled');
+  for (const mapFiltersSelect of mapFiltersSelects) {
+    mapFiltersSelect.disabled = true;
+  }
+};
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -49,5 +51,24 @@ const showAlert = (message) => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
 };
-export {enableFunction, disableFunction, showAlert};
+
+function debounce (callback, timeoutDelay) {
+  // Используем замыкания, чтобы id таймаута у нас навсегда приклеился
+  // к возвращаемой функции с setTimeout, тогда мы его сможем перезаписывать
+  let timeoutId;
+
+  return (...rest) => {
+    // Перед каждым новым вызовом удаляем предыдущий таймаут,
+    // чтобы они не накапливались
+    clearTimeout(timeoutId);
+
+    // Затем устанавливаем новый таймаут с вызовом колбэка на ту же задержку
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+
+    // Таким образом цикл «поставить таймаут - удалить таймаут» будет выполняться,
+    // пока действие совершается чаще, чем переданная задержка timeoutDelay
+  };
+}
+
+export { enableFunction, disableFunction, showAlert, disableFilterForm, debounce };
 

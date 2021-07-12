@@ -42,8 +42,6 @@ bigMarker.on('moveend', (evt) => {
   inputAddress.value = `${latLng.lat.toFixed(5)}, ${  latLng.lng.toFixed(5)}`;
 });
 
-// bigMarker.remove();
-
 const customIcon = L.icon({
   iconUrl: './img/pin.svg',
   iconSize: [40, 40],
@@ -55,7 +53,6 @@ const createCustomPopup = (newOffer) => {
   const realOffer = popupArticle.cloneNode(true);
   realOffer.querySelector('.popup__title').textContent = newOffer.offer.title;
   realOffer.querySelector('.popup__text--address').textContent = newOffer.offer.address;
-  // realOffer.querySelector('.popup__text--address').textContent = `${newOffer.offer.address.lat   },${  newOffer.offer.address.lng}`;
   realOffer.querySelector('.popup__text--price').textContent = `${newOffer.offer.price  } ₽/ночь`;
   realOffer.querySelector('.popup__type').textContent = newOffer.offer.type;
   switch (newOffer.offer.type) {
@@ -101,6 +98,7 @@ const createCustomPopup = (newOffer) => {
   similarOfferFragment.appendChild(realOffer);
   return realOffer;
 };
+
 const markerGroup = L.layerGroup().addTo(map);
 
 //Функция создания маркера с popupом
@@ -113,16 +111,7 @@ const createMarker = (currentValue) => {
   marker.addTo(markerGroup).bindPopup(createCustomPopup(currentValue),{ keepInView: true });
 };
 
-
-//перебор выбранного массива с созданием попапов (и опциональный slice, которрый будет нужен дальше)
-// newOffers.slice(0, newOffers.length / 2).forEach((currentValue) => {
-//   createMarker(currentValue);
-// });
-
-// newOffers.slice(newOffers.length / 2).forEach((currentValue) => {
-//   createMarker(currentValue);
-// });
-//markerGroup.clearLayers();
+markerGroup.clearLayers();
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
     lat: 35.68491, lng: 139.75159,
@@ -132,4 +121,4 @@ resetButton.addEventListener('click', () => {
   }, 14);
 });
 
-export {createMarker, bigMarker, map};
+export {createMarker, bigMarker, map, markerGroup};

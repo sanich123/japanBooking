@@ -7,6 +7,7 @@ const inputAddress = document.querySelector('#address');
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE = 1000000;
+
 inputPrice.addEventListener('input', () => {
   const priceValue = inputPrice.value;
   if (priceValue > MAX_PRICE) {
@@ -19,11 +20,13 @@ inputPrice.addEventListener('input', () => {
   }
   inputPrice.reportValidity();
 });
+
 inputPrice.addEventListener('invalid', () => {
   if (inputPrice.validity.valueMissing) {
     inputPrice.setCustomValidity('Обязательное поле');
   }
 });
+
 inputTitle.addEventListener('input', () => {
   const valueLength = inputTitle.value.length;
   if (valueLength < MIN_TITLE_LENGTH) {
@@ -35,11 +38,13 @@ inputTitle.addEventListener('input', () => {
   }
   inputTitle.reportValidity();
 });
+
 inputTitle.addEventListener('invalid', () => {
   if (inputTitle.validity.valueMissing) {
     inputTitle.setCustomValidity('Обязательное поле');
   }
 });
+
 inputAddress.addEventListener('invalid', () => {
   if (inputAddress.validity.valueMissing) {
     inputAddress.setCustomValidity('Обязательное поле');
