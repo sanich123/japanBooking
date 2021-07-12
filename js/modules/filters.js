@@ -14,6 +14,7 @@ const filterRooms = blockFilter.querySelector('#housing-rooms');
 const filterGuests = blockFilter.querySelector('#housing-guests');
 const filterFeatures = blockFilter.querySelector('#housing-features');
 
+//Функция отрисовки похожих объявлений
 const renderSimilarOffers = (arr) => {
   markerGroup.clearLayers();
   arr
@@ -109,5 +110,3 @@ getData(
 );
 allOffers();
 
-export
-{allOffers};

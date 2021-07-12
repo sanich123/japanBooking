@@ -1,4 +1,5 @@
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+
 const fileChooserPhoto = document.querySelector('.ad-form__field input[type="file"]');
 const fileChooserHouse = document.querySelector('.ad-form__input');
 
@@ -18,6 +19,7 @@ fileChooserPhoto.addEventListener('change', () => {
     reader.readAsDataURL(file);
   }
 });
+
 fileChooserHouse.addEventListener('change', () => {
   const file = fileChooserHouse.files[0];
   const fileName = file.name.toLowerCase();

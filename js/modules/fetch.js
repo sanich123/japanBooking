@@ -1,5 +1,5 @@
 import { disableFilterForm } from './util.js';
-
+//Функция, получающая данные с сервера
 const getData = (url, onSuccess, onError) => () =>
   fetch(url, {
     method: 'GET',
@@ -19,6 +19,7 @@ const getData = (url, onSuccess, onError) => () =>
       disableFilterForm();
     });
 
+//Функция, отправляющая данные на сервер
 const postData = (url, body, onSuccess, onError) => {
   fetch(url, {
     method: 'POST',

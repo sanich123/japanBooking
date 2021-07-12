@@ -15,6 +15,7 @@ const map = L
     enableFunction();
   })
   .setView({lat: 35.68491, lng: 139.75159}, 14);
+
 //Добавляем слой с изображениями
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -110,8 +111,10 @@ const createMarker = (currentValue) => {
   );
   marker.addTo(markerGroup).bindPopup(createCustomPopup(currentValue),{ keepInView: true });
 };
-
+//Функция очистки карты
 markerGroup.clearLayers();
+
+//Очистка полей ввода
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
     lat: 35.68491, lng: 139.75159,

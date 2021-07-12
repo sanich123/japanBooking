@@ -4,6 +4,7 @@ const mapFilters = document.querySelector('.map__filters');
 const mapFiltersSelects = mapFilters.children;
 const allFieldsets = ourForm.querySelectorAll('fieldset');
 const ALERT_SHOW_TIME = 5000;
+
 //Выключение всех форм
 const disableFunction = function () {
   ourForm.classList.add('ad-form--disabled');
@@ -15,6 +16,7 @@ const disableFunction = function () {
     mapFiltersSelect.disabled = true;
   }
 };
+
 //Включение всех форм
 const enableFunction = function () {
   ourForm.classList.remove('ad-form--disabled');
@@ -26,6 +28,7 @@ const enableFunction = function () {
     mapFiltersSelect.disabled = false;
   }
 };
+
 //Выключение формы фильтров
 const disableFilterForm = () => {
   mapFilters.classList.add('map__filters--disabled');
@@ -52,6 +55,7 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
+//Функция уменьшения излишнего дребезга
 function debounce (callback, timeoutDelay) {
   // Используем замыкания, чтобы id таймаута у нас навсегда приклеился
   // к возвращаемой функции с setTimeout, тогда мы его сможем перезаписывать

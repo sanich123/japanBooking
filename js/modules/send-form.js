@@ -1,6 +1,6 @@
 import { bigMarker } from './map.js';
 import { map } from './map.js';
-import {postData} from './fetch.js';
+import { postData } from './fetch.js';
 
 const submitButton = document.querySelector('.ad-form');
 const templateSuccess = document.querySelector('#success').content.querySelector('.success');
@@ -11,14 +11,17 @@ const removeSuccessMessage = (evt) => {
     document.querySelector('.success').remove();
   }
 };
+
 const removeSuccessMessageByClick = () => {
   document.querySelector('.success').remove();
 };
+
 const removeFailMessage = (evt) => {
   if (evt.keyCode === 27 && document.querySelector('.error')) {
     document.querySelector('.error').remove();
   }
 };
+
 const removeFailMessageByClick = () => {
   document.querySelector('.error').remove();
 };
