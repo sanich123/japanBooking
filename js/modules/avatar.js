@@ -1,13 +1,13 @@
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
-const fileChooserPhoto = document.querySelector('.ad-form__field input[type="file"]');
-const fileChooserHouse = document.querySelector('.ad-form__input');
+const fileChooserAvatar = document.querySelector('.ad-form__field input[type="file"]');
+const fileChooserPhotoHouse = document.querySelector('.ad-form__input');
 
 const housePreview = document.querySelector('.ad-form__photo');
 const avatarPreview = document.querySelector('.ad-form-header__preview img');
 
-
-fileChooserPhoto.addEventListener('change', () => {
-  const file = fileChooserPhoto.files[0];
+//Превью аватара пользователя
+fileChooserAvatar.addEventListener('change', () => {
+  const file = fileChooserAvatar.files[0];
   const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
   if (matches) {
@@ -18,8 +18,10 @@ fileChooserPhoto.addEventListener('change', () => {
     reader.readAsDataURL(file);
   }
 });
-fileChooserHouse.addEventListener('change', () => {
-  const file = fileChooserHouse.files[0];
+
+//Превью фото жилья
+fileChooserPhotoHouse.addEventListener('change', () => {
+  const file = fileChooserPhotoHouse.files[0];
   const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
   if (matches) {

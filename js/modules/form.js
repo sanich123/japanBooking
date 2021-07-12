@@ -1,10 +1,10 @@
 import { inputPrice } from './validation.js';
-//Соответствие комнат и гостей
+
 const roomNumber = document.querySelector('#room_number');
 const roomCapacity = document.querySelector('#capacity');
-
-//Соответствие типа жилья и цены
 const typeOfHouse = document.querySelector('#type');
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
 
 //Соответствие типа жилья и цены
 typeOfHouse.addEventListener('change', () => {
@@ -59,9 +59,6 @@ roomNumber.addEventListener('change', () => {
 });
 
 //Синхронизация времени заезда - уезда
-const timeIn = document.querySelector('#timein');
-const timeOut = document.querySelector('#timeout');
-
 timeIn.addEventListener('change', () => {
   if (timeIn[0].selected) {
     timeOut[0].selected = true;

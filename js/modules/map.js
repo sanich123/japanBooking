@@ -15,6 +15,7 @@ const map = L
     enableFunction();
   })
   .setView({lat: 35.68491, lng: 139.75159}, 14);
+
 //Добавляем слой с изображениями
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -63,8 +64,7 @@ const createCustomPopup = (newOffer) => {
     case 'hotel' : realOffer.querySelector('.popup__type').textContent = 'Отель'; break;
   }
   realOffer.querySelector('.popup__text--capacity').textContent = `${newOffer.offer.rooms}   комнаты для ${newOffer.offer.guests} гостей`;
-  // eslint-disable-next-line no-useless-concat
-  realOffer.querySelector('.popup__text--time').textContent = `Заезд после ${  newOffer.offer.checkin  },` +  ` выезд до ${  newOffer.offer.checkout}`;
+  realOffer.querySelector('.popup__text--time').textContent = `Заезд после ${  newOffer.offer.checkin  }, выезд до ${  newOffer.offer.checkout}`;
   const features = realOffer.querySelector('.popup__features');
   features.innerHTML = '';
   if (newOffer.offer.features) {
@@ -108,10 +108,14 @@ const createMarker = (currentValue) => {
       lng: currentValue.location.lng },
     { icon: customIcon },
   );
-  marker.addTo(markerGroup).bindPopup(createCustomPopup(currentValue),{ keepInView: true });
+  marker.addTo(markerGroup).bindPopup(createCustomPopup(currentValue),
+    { keepInView: true });
 };
 
+//Очистка карты
 markerGroup.clearLayers();
+
+//Кнопка очистки формы
 resetButton.addEventListener('click', () => {
   bigMarker.setLatLng({
     lat: 35.68491, lng: 139.75159,
