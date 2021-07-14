@@ -52,7 +52,7 @@ const showSuccessMessage = () => {
 submitButton.addEventListener('submit', (evt) => {
   evt.preventDefault();
   postData(
-    ('https://23.javascript.pages.academy/keksobooking4'),
+    ('https://23.javascript.pages.academy/keksobooking'),
     (new FormData(evt.target)),
     showSuccessMessage,
     showFailMessage,
