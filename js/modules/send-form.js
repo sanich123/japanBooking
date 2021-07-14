@@ -6,9 +6,12 @@ const submitButton = document.querySelector('.ad-form');
 const templateSuccess = document.querySelector('#success').content.querySelector('.success');
 const templateFail = document.querySelector('#error').content.querySelector('.error');
 
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
 const removeSuccessMessage = (evt) => {
-  if (evt.keyCode === 27 && document.querySelector('.success')) {
+  if (isEscEvent(evt) && document.querySelector('.success')) {
     document.querySelector('.success').remove();
+    document.removeEventListener('keydown', removeSuccessMessage);
   }
 };
 
@@ -17,8 +20,9 @@ const removeSuccessMessageByClick = () => {
 };
 
 const removeFailMessage = (evt) => {
-  if (evt.keyCode === 27 && document.querySelector('.error')) {
+  if (isEscEvent(evt) && document.querySelector('.error')) {
     document.querySelector('.error').remove();
+    document.removeEventListener('keydown', removeFailMessage);
   }
 };
 
@@ -48,7 +52,7 @@ const showSuccessMessage = () => {
 submitButton.addEventListener('submit', (evt) => {
   evt.preventDefault();
   postData(
-    ('https://23.javascript.pages.academy/keksobooking'),
+    ('https://23.javascript.pages.academy/keksobooking4'),
     (new FormData(evt.target)),
     showSuccessMessage,
     showFailMessage,

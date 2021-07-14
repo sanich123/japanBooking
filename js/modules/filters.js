@@ -6,6 +6,8 @@ import { debounce } from './util.js';
 
 const RERENDER_DELAY = 500;
 const NUMBER_FOR_SLICING = 10;
+const MINIMAL_PRICE = 10000;
+const HIGH_PRICE = 50000;
 
 const blockFilter = document.querySelector('.map__filters');
 const filterType = blockFilter.querySelector('#housing-type');
@@ -39,11 +41,11 @@ getData(
         () => {
           const value = filterPrice.value;
           arr = arr.filter((it) => {
-            if (value === 'middle' && it.offer.price >= 10000 && it.offer.price <= 50000) {
+            if (value === 'middle' && it.offer.price >= MINIMAL_PRICE && it.offer.price <= HIGH_PRICE) {
               return it;
-            } else if (value === 'low' && it.offer.price < 10000) {
+            } else if (value === 'low' && it.offer.price < MINIMAL_PRICE) {
               return it;
-            } else if (value === 'high' && it.offer.price > 50000) {
+            } else if (value === 'high' && it.offer.price > HIGH_PRICE) {
               return it;
             } else if (value === 'any') {
               return it;

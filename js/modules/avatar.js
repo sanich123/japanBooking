@@ -4,7 +4,8 @@ const fileChooserPhotoHouse = document.querySelector('.ad-form__input');
 
 const housePreview = document.querySelector('.ad-form__photo');
 const avatarPreview = document.querySelector('.ad-form-header__preview img');
-
+const WIDTH = 40;
+const HEIGHT = 44;
 //Превью аватара пользователя
 fileChooserAvatar.addEventListener('change', () => {
   const file = fileChooserAvatar.files[0];
@@ -29,8 +30,8 @@ fileChooserPhotoHouse.addEventListener('change', () => {
     reader.addEventListener('load', () => {
       const imageOfHouse = document.createElement('img');
       imageOfHouse.alt = 'Фотография жилья';
-      imageOfHouse.width = '40';
-      imageOfHouse.height = '44';
+      imageOfHouse.width = WIDTH;
+      imageOfHouse.height = HEIGHT;
       imageOfHouse.classList.add('ad-form-header__preview');
       imageOfHouse.src = reader.result;
       housePreview.appendChild(imageOfHouse);
