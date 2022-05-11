@@ -4,35 +4,10 @@ Link to the project - https://japan-booking-o9t5hzibx-sanich123.vercel.app/
 Keksobooking is a service for placing ads for renting real estate in the center of Tokyo. Users are given the opportunity to post ads about their real estate or view already posted ads.
 
 Description of functionality
-1. Page states
-1.1. Inactive state. When opened, the page is in an inactive state:
-A gray box is displayed in place of the map.
-The .ad-form form for filling out ad information contains the ad-form--disabled class;
-All interactive .ad-form form elements must be disabled with a disabled attribute added to them or their parent fieldset blocks;
-The form with .map__filters filters is blocked in the same way as the .ad-form form - a special class is added to the form, and disabled attributes are added to its interactive elements;
-1.2. Active state. Loading and successful initialization of the map (the map is implemented by a third-party Leaflet library) brings the page to the active state. In the active state, the page allows you to make changes to the form and submit it to the server. After downloading the data from the server, view similar ads on the map, filter them and clarify detailed information about them, showing a card for each of the ads.
-2. Filling in information
-2.1. Filling in information and sending data:
-user photo;
-title;
-address (coordinates);
-type of housing;
-Price per night;
-number of rooms;
-number of beds;
-time of arrival and departure from the apartment;
-Extra options:
-parking;
-WiFi;
-air conditioning;
-kitchen;
-washing machine;
-elevator.
-free text description;
-housing photo.
-2.2. All information is filled in on one page without intermediate transitions. The order in which you fill in the information is not important.
-2.3. After filling in all the data, when you click on the "Publish" button, all data from the form, including images, is sent using an AJAX request to the server https://23.javascript.pages.academy/keksobooking using the POST method with the type multipart/form- data.
-2.4. The page responds to incorrectly entered values ​​in the form. If the data entered into the form does not meet the restrictions specified in the section describing input fields, the form cannot be submitted to the server. When you try to submit a form with incorrect data, the submission does not occur, and incorrectly filled fields are highlighted with a red frame. The way of adding a frame and its style are arbitrary.
+
+All information is filled in on one page without intermediate transitions. The order in which you fill in the information is not important.
+After filling in all the data, when you click on the "Publish" button, all data from the form, including images, is sent using an AJAX request to the server using the POST method with the type multipart/form-data.
+The page responds to incorrectly entered values ​​in the form. If the data entered into the form does not meet the restrictions specified in the section describing input fields, the form cannot be submitted to the server. When you try to submit a form with incorrect data, the submission does not occur, and incorrectly filled fields are highlighted with a red frame. The way of adding a frame and its style are arbitrary.
 2.5. Upon successful submission of the form or its clearing (clicking on the .ad-form__reset button), the page, without reloading, goes into the state when:
 all filled fields are returned to their original state;
 filtering (filter state and filtered labels) is reset;
